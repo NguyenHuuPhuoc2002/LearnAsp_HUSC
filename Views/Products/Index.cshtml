@@ -30,12 +30,12 @@
                     <td colspan="1">Stt</td>
                     <th scope="1">@i.Name</th>
                     <td colspan="1">@i.Description</td>
-                    <td colspan="1">@i.Price</td>
+                    <td colspan="1">@i.Price.ToString("N0")</td>
                     <td colspan="1">@i.Category</td>
-                    <td colspan="1">@i.ProductionDay</td>
+                    <td colspan="1">@i.ProductionDay.ToString("dd/MM/yyyy")</td>
                     <td colspan="1">
-                        <button type="button" class="btn btn-primary">Edit</button>
-                        <button type="button" class="btn btn-warning">Delete</button>
+                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                        <button type="button" class="btn btn-warning"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>
             }
