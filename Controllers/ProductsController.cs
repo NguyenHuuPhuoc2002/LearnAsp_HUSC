@@ -10,10 +10,11 @@ namespace BaoTest1.Controllers
         public ProductsController() { 
             service = new ProductsService();
         }
-        public IActionResult Index()
+        public IActionResult Index(String? keyword)
         {
             ProductsViewModel viewModel = new ProductsViewModel();
-            viewModel.Products = service.GetProducts();
+            viewModel.keyword = keyword
+            viewModel.Products = service.GetProducts(String ? keyword);
             return View(viewModel);
         }
     }

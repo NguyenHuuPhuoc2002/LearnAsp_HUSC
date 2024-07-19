@@ -72,7 +72,7 @@ namespace BaoTest1.Services
         /// <summary>
         /// Funtion to get products from ProductsService
         /// </summary>
-        public List<Products> GetProducts()
+        public List<Products> GetProducts(string? keyword)
         {
             return products;
         }
