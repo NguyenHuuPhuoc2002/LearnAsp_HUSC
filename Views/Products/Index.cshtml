@@ -1,0 +1,48 @@
+﻿@using BaoTest1.ViewModel
+@model ProductsViewModel
+<h2>List Products</h2>
+<form>
+    <div class="mb-3">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="keyword">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <th scope="col">Stt</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Pride</th>
+            <th scope="col">Category</th>
+            <th scope="col">Production Day</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Products != null)
+        {
+            int stt = 0;
+            @foreach (var i in Model.Products)
+            {
+                stt++;
+                <tr>
+                    <td colspan="1">Stt</td>
+                    <th scope="1">@i.Name</th>
+                    <td colspan="1">@i.Description</td>
+                    <td colspan="1">@i.Price</td>
+                    <td colspan="1">@i.Category</td>
+                    <td colspan="1">@i.ProductionDay</td>
+                    <td colspan="1">
+                        <button type="button" class="btn btn-primary">Edit</button>
+                        <button type="button" class="btn btn-warning">Delete</button>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5">Summary is: @Model.Products.Count</td>
+            </tr>
+        }
+       
+    </tbody>
+</table>
