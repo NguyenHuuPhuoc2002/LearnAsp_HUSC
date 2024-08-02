@@ -1,10 +1,16 @@
 ﻿@using BaoTest1.ViewModel
 @model ProductsViewModel
+@{
+    ViewData["Title"] = "Index";
+}
 <h2>List Products</h2>
+
 <form>
-    <div class="mb-3">
-        <input type="text" class="form-control" id="exampleInputEmail1" name="keyword">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="mb-3 col-7" style="display: inline-flex">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="keyword" placeholder="Tìm kiếm sản phẩm...">
+        <button type="submit" class="btn btn-primary ms-lg-2">Tìm</button>
+    </div>
+    
 </form>
 
 <table class="table table-bordered border-primary">
@@ -26,15 +32,33 @@
             {
                 stt++;
                 <tr>
-                    <td colspan="1">Stt</td>
+                    <td colspan="1">@stt</td>
                     <th scope="1">@i.Name</th>
                     <td colspan="1">@i.Description</td>
                     <td colspan="1">@i.Price.ToString("N0")</td>
                     <td colspan="1">@i.Category</td>
                     <td colspan="1">@i.ProductionDay.ToString("dd/MM/yyyy")</td>
                     <td colspan="1">
-                        <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                        <button type="button" class="btn btn-warning"><i class="bi bi-trash"></i></button>
+                        <a asp-action="Edit" asp-route-id="@i.Id" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#delete_@i.Id"><i class="bi bi-trash"></i></button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="delete_@i.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Bạn có chắc muốn xóa @i.Name không ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bỏ qua</button>
+                                        <a asp-action="DeleteProduct" asp-route-id="@i.Id" class="btn btn-primary">Đồng ý</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             }
@@ -45,3 +69,4 @@
        
     </tbody>
 </table>
+<a asp-action="AddProduct" class="btn btn-primary">Thêm sản phẩm mới</a>
